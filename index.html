@@ -31,12 +31,12 @@ img,video{display:block;max-width:100%;}
 
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:28px 50px;border-bottom:1px solid transparent;transition:.4s;}
 nav.scrolled{background:rgba(248,243,236,.92);backdrop-filter:blur(10px);border-color:var(--line);padding:18px 50px;}
-.logo{display:flex;align-items:center;gap:13px;}
+.logo{display:flex;align-items:center;gap:13px;flex-shrink:1;min-width:0;}
 .logo-mark{width:36px;height:36px;border:1px solid var(--rose-deep);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',Georgia,'Times New Roman',serif;font-style:italic;font-size:13px;letter-spacing:.5px;color:var(--rose-deep);flex-shrink:0;}
-.logo-text{line-height:1.15;}
-.logo-text .logo-name{font-family:'Fraunces',Georgia,'Times New Roman',serif;font-size:19px;font-weight:500;letter-spacing:.2px;display:block;}
+.logo-text{line-height:1.15;min-width:0;overflow:hidden;}
+.logo-text .logo-name{font-family:'Fraunces',Georgia,'Times New Roman',serif;font-size:19px;font-weight:500;letter-spacing:.2px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .logo-text .logo-name em{font-style:italic;color:var(--rose);font-weight:500;}
-.logo-text .logo-tag{font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--ink-soft);font-weight:700;display:block;margin-top:2px;}
+.logo-text .logo-tag{font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--ink-soft);font-weight:700;display:block;margin-top:2px;white-space:nowrap;}
 .navlinks{display:flex;gap:34px;font-size:13px;letter-spacing:.3px;}
 .navlinks a{position:relative;}
 .navlinks a::after{content:'';position:absolute;bottom:-5px;left:0;width:0;height:1px;background:var(--rose);transition:.3s;}
@@ -54,7 +54,7 @@ nav.scrolled{background:rgba(248,243,236,.92);backdrop-filter:blur(10px);border-
 .mobile-menu a{font-size:17px;font-family:'Fraunces',Georgia,'Times New Roman',serif;padding:12px 0;border-bottom:1px solid var(--line);}
 .mobile-menu .btn-primary{text-align:center;margin-top:20px;}
 @media(max-width:900px){.navlinks{display:none;}.hamburger{display:flex;}}
-@media(max-width:520px){.book-btn{display:none;}}
+@media(max-width:520px){.book-btn{display:none !important;}}
 
 .hero{padding:150px 0 0;}
 .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:0;align-items:end;}
@@ -336,7 +336,7 @@ footer{background:var(--ink);color:rgba(248,243,236,.6);padding:70px 0 30px;}
   .logo-tag{display:none;}
   .hero h1{font-size:34px;}
   .hero-kicker::before{width:16px;}
-  .book-btn{display:none;}
+  .book-btn{display:none !important;}
   .interlude-stats{gap:20px 26px;}
   .form-card{padding:18px;}
   .qual-item{flex-direction:column;align-items:flex-start;gap:4px;}
@@ -347,7 +347,7 @@ footer{background:var(--ink);color:rgba(248,243,236,.6);padding:70px 0 30px;}
 
 /* ===== TOUCH TARGETS & MISC POLISH (all mobile) ===== */
 @media(max-width:900px){
-  .btn-primary,.btn-text,.form-submit,.wa-inline,.book-btn{min-height:48px;display:inline-flex;align-items:center;justify-content:center;}
+  .btn-primary,.btn-text,.form-submit,.wa-inline{min-height:48px;display:inline-flex;align-items:center;justify-content:center;}
   .form-submit{display:flex;}
   .navlinks a,.mobile-menu a{min-height:44px;display:flex;align-items:center;}
   .gallery-strip{scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;}
