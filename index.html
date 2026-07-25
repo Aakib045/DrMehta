@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Shibha Mehta Dental Clinic — Editorial</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ivory:#F8F3EC;
+  --ivory-deep:#F0E8DB;
+  --rose:#B76E5C;
+  --rose-deep:#8A4A3C;
+  --rose-soft:#E4C3B6;
+  --ink:#241E1B;
+  --ink-soft:#5c534c;
+  --line:#DAD0C3;
+  --gold:#C9A15A;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Manrope',sans-serif;background:var(--ivory);color:var(--ink);overflow-x:hidden;}
+h1,h2,h3,.serif{font-family:'Fraunces',serif;}
+a{text-decoration:none;color:inherit;}
+.container{max-width:1280px;margin:0 auto;padding:0 44px;}
+img,video{display:block;max-width:100%;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:28px 50px;border-bottom:1px solid transparent;transition:.4s;}
+nav.scrolled{background:rgba(248,243,236,.92);backdrop-filter:blur(10px);border-color:var(--line);padding:18px 50px;}
+.logo{font-size:20px;font-weight:600;letter-spacing:.2px;}
+.navlinks{display:flex;gap:34px;font-size:13px;letter-spacing:.3px;}
+.navlinks a{position:relative;}
+.navlinks a::after{content:'';position:absolute;bottom:-5px;left:0;width:0;height:1px;background:var(--rose);transition:.3s;}
+.navlinks a:hover::after{width:100%;}
+.book-btn{background:var(--ink);color:var(--ivory) !important;padding:11px 24px;font-size:12.5px;letter-spacing:.5px;white-space:nowrap;}
+.hamburger{display:none;flex-direction:column;gap:5px;width:24px;cursor:pointer;z-index:160;background:none;border:none;padding:6px;margin:-6px;}
+.hamburger span{height:2px;background:var(--ink);width:100%;display:block;transition:.3s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.menu-overlay{position:fixed;inset:0;background:rgba(36,30,27,.45);z-index:140;opacity:0;pointer-events:none;transition:.3s;}
+.menu-overlay.open{opacity:1;pointer-events:auto;}
+.mobile-menu{position:fixed;top:0;right:-100%;width:78%;max-width:320px;height:100vh;background:var(--ivory);z-index:150;padding:100px 36px 40px;display:flex;flex-direction:column;gap:8px;box-shadow:-10px 0 40px rgba(0,0,0,.15);transition:right .35s ease;overflow-y:auto;}
+.mobile-menu.open{right:0;}
+.mobile-menu a{font-size:17px;font-family:'Fraunces',serif;padding:12px 0;border-bottom:1px solid var(--line);}
+.mobile-menu .btn-primary{text-align:center;margin-top:20px;}
+@media(max-width:900px){.navlinks{display:none;}.hamburger{display:flex;}}
+@media(max-width:520px){.book-btn{display:none;}}
+
+.hero{padding:150px 0 0;}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:0;align-items:end;}
+.hero-text{padding-right:60px;padding-bottom:70px;}
+.hero-kicker{font-size:12.5px;letter-spacing:2px;text-transform:uppercase;color:var(--rose-deep);margin-bottom:24px;font-weight:600;display:flex;align-items:center;gap:10px;}
+.hero-kicker::before{content:'';width:24px;height:1px;background:var(--rose-deep);}
+.hero h1{font-size:clamp(46px,7vw,92px);line-height:.98;font-weight:600;letter-spacing:-1px;margin-bottom:30px;}
+.hero h1 .line2{color:var(--rose);font-style:italic;font-weight:500;}
+.hero-text p{font-size:16.5px;line-height:1.8;color:var(--ink-soft);max-width:440px;margin-bottom:36px;}
+.hero-ctas{display:flex;gap:16px;align-items:center;}
+.btn-primary{background:var(--rose);color:#fff;padding:16px 32px;font-size:13.5px;font-weight:600;letter-spacing:.3px;border-radius:2px;transition:.3s;display:inline-block;}
+.btn-primary:hover{background:var(--rose-deep);}
+.btn-text{font-size:13.5px;font-weight:600;border-bottom:2px solid var(--ink);padding-bottom:3px;}
+.hero-visual{position:relative;aspect-ratio:4/5.4;background:linear-gradient(150deg,#E8D9CE,#D4B9A8);overflow:hidden;box-shadow:0 30px 70px -20px rgba(36,30,27,.3);}
+.hero-visual video{width:100%;height:100%;object-fit:cover;}
+.hero-visual-badge{position:absolute;bottom:22px;left:22px;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);padding:14px 22px;display:flex;align-items:center;box-shadow:0 15px 40px rgba(0,0,0,.15);}
+.hero-visual-badge .badge-stars{color:var(--gold);font-size:18px;letter-spacing:3px;}
+.hero-caption{display:flex;justify-content:flex-end;padding:22px 0;border-top:1px solid var(--line);margin-top:0;}
+.status-pill{display:inline-flex;align-items:center;gap:9px;background:var(--ivory-deep);border:1px solid var(--line);padding:8px 16px;border-radius:30px;font-size:12px;letter-spacing:.3px;color:var(--ink);}
+.status-dot{width:7px;height:7px;border-radius:50%;background:#3EA35C;box-shadow:0 0 0 3px rgba(62,163,92,.2);flex-shrink:0;}
+
+.pillars{padding:0 0 70px;}
+.pillars .container{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+.pillar{background:var(--ivory);padding:34px 28px;}
+.pillar-icon{width:32px;height:32px;margin-bottom:18px;color:var(--rose);}
+.pillar-icon svg{width:100%;height:100%;stroke:currentColor;fill:none;stroke-width:1.4;}
+.pillar b{font-family:'Fraunces',serif;font-size:15.5px;font-weight:500;display:block;margin-bottom:8px;}
+.pillar p{font-size:13px;line-height:1.6;color:var(--ink-soft);}
+@media(max-width:900px){.pillars .container{grid-template-columns:1fr 1fr;}}
+
+.interlude{position:relative;height:64vh;min-height:440px;overflow:hidden;margin-top:0;}
+.interlude video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.interlude::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(36,30,27,.15) 0%,rgba(36,30,27,.55) 100%);}
+.interlude-content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:60px 50px;color:#fff;}
+.interlude-content .hero-kicker{color:var(--gold);}
+.interlude-content .hero-kicker::before{background:var(--gold);}
+.interlude-content h2{font-size:clamp(28px,4.5vw,44px);font-weight:500;max-width:620px;line-height:1.2;}
+.interlude-stats{display:flex;gap:60px;margin-top:36px;flex-wrap:wrap;}
+.interlude-stats .stat b{font-family:'Fraunces',serif;font-size:30px;display:block;}
+.interlude-stats .stat span{font-size:11px;letter-spacing:1px;text-transform:uppercase;opacity:.75;}
+
+.about{padding:130px 0;}
+.about-head{max-width:720px;margin-bottom:60px;}
+.about-head h2{font-size:clamp(30px,4vw,44px);font-weight:600;line-height:1.25;}
+.about-body{display:grid;grid-template-columns:1fr 1fr;gap:70px;}
+.about-body p{font-size:16px;line-height:1.9;color:var(--ink-soft);margin-bottom:20px;}
+.video-card{position:relative;aspect-ratio:16/10;overflow:hidden;margin-top:28px;box-shadow:0 20px 50px -15px rgba(36,30,27,.3);}
+.video-card video{width:100%;height:100%;object-fit:cover;}
+.video-card::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(36,30,27,.5),transparent 50%);}
+.play-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:60px;height:60px;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;z-index:2;}
+.play-btn::after{content:'';border-left:14px solid var(--rose-deep);border-top:9px solid transparent;border-bottom:9px solid transparent;margin-left:4px;}
+.video-card-caption{position:absolute;bottom:16px;left:20px;color:#fff;font-size:12.5px;letter-spacing:.5px;z-index:2;}
+.quals-list{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--line);}
+.qual-item{display:flex;justify-content:space-between;padding:20px 0;border-bottom:1px solid var(--line);}
+.qual-item b{font-family:'Fraunces',serif;font-size:16px;font-weight:500;}
+.qual-item span{font-size:13px;color:#8a7d72;}
+
+.process{padding:90px 0 130px;background:var(--ivory-deep);}
+.process-line-wrap{position:relative;margin-top:56px;}
+.process-line{position:absolute;top:0;bottom:0;left:29px;width:1px;background:var(--line);}
+.process-step{display:grid;grid-template-columns:60px 1fr;gap:28px;padding-bottom:56px;}
+.process-step:last-child{padding-bottom:0;}
+.process-num{width:60px;height:60px;border-radius:50%;background:var(--ivory);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-style:italic;font-size:18px;color:var(--rose-deep);flex-shrink:0;}
+.process-body h3{font-family:'Fraunces',serif;font-size:23px;font-weight:500;margin-bottom:10px;}
+.process-body p{font-size:15px;line-height:1.8;color:var(--ink-soft);max-width:520px;}
+
+.services{padding:90px 0 130px;}
+.sec-kicker{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:56px;flex-wrap:wrap;gap:20px;}
+.sec-kicker h2{font-size:clamp(30px,4vw,44px);font-weight:600;}
+.services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);}
+.service-card{background:var(--ivory);padding:34px 26px;min-height:190px;display:flex;flex-direction:column;justify-content:space-between;transition:.3s;}
+.service-card:hover{background:var(--rose);}
+.service-card:hover h3,.service-card:hover p{color:#fff;}
+.service-card h3{font-family:'Fraunces',serif;font-size:19px;font-weight:500;margin-bottom:8px;transition:.3s;}
+.service-card p{font-size:12.5px;line-height:1.6;color:#8a7d72;transition:.3s;}
+@media(max-width:900px){.services-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.services-grid{grid-template-columns:1fr;}}
+
+.gallery{background:var(--ink);color:var(--ivory);padding:120px 0;}
+.gallery .sec-kicker h2{color:var(--ivory);}
+.gallery .hero-kicker{color:var(--gold);}
+.gallery .hero-kicker::before{background:var(--gold);}
+.ba-wrap{max-width:760px;margin:0 auto;}
+.ba-slider{position:relative;aspect-ratio:16/9;overflow:hidden;box-shadow:0 25px 60px rgba(0,0,0,.4);}
+.ba-slider .before{position:absolute;inset:0;background:linear-gradient(135deg,#4a423c,#2c2724);clip-path:inset(0 50% 0 0);display:flex;align-items:flex-end;padding:22px;}
+.ba-slider .after{position:absolute;inset:0;background:linear-gradient(135deg,var(--rose),var(--rose-deep));display:flex;align-items:flex-end;justify-content:flex-end;padding:22px;}
+.ba-label{background:rgba(255,255,255,.15);backdrop-filter:blur(6px);font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;padding:7px 16px;}
+.ba-divider{position:absolute;top:0;bottom:0;left:50%;width:2px;background:var(--gold);}
+.ba-divider::after{content:'⇔';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:40px;height:40px;border-radius:50%;background:var(--gold);color:var(--ink);display:flex;align-items:center;justify-content:center;font-size:14px;}
+.gallery-strip{display:flex;gap:20px;margin-top:56px;overflow-x:auto;padding-bottom:16px;}
+.gs-item{flex:0 0 220px;aspect-ratio:3/4;background:linear-gradient(150deg,#3a332f,#524740);position:relative;display:flex;align-items:flex-end;padding:16px;font-size:11px;letter-spacing:.5px;text-transform:uppercase;color:rgba(255,255,255,.6);}
+
+.spotlight-video{position:relative;height:56vh;min-height:400px;overflow:hidden;}
+.spotlight-video video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.spotlight-video::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(36,30,27,.75) 0%,rgba(36,30,27,.2) 55%,transparent 100%);}
+.spotlight-content{position:relative;z-index:2;height:100%;display:flex;align-items:center;padding:0 50px;max-width:1280px;margin:0 auto;}
+.spotlight-quote{max-width:500px;color:#fff;}
+.spotlight-quote .stars{color:var(--gold);letter-spacing:3px;margin-bottom:18px;}
+.spotlight-quote p{font-family:'Fraunces',serif;font-style:italic;font-size:24px;line-height:1.4;margin-bottom:22px;}
+.spotlight-quote .name b{display:block;font-size:13px;letter-spacing:1px;text-transform:uppercase;}
+.spotlight-quote .name span{font-size:12px;opacity:.7;}
+
+.testimonials{padding:90px 0 120px;}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+.testi-card{background:var(--ivory);padding:38px 30px;}
+.stars{color:var(--gold);letter-spacing:2px;margin-bottom:16px;font-size:13px;}
+.testi-card p{font-family:'Fraunces',serif;font-style:italic;font-size:16.5px;line-height:1.6;margin-bottom:22px;}
+.testi-name b{display:block;font-size:13px;text-transform:uppercase;letter-spacing:.5px;}
+.testi-name span{font-size:12px;color:#8a7d72;}
+@media(max-width:900px){.testi-grid{grid-template-columns:1fr;}}
+
+.cta{position:relative;padding:0;overflow:hidden;}
+.cta video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.cta::after{content:'';position:absolute;inset:0;background:rgba(36,30,27,.72);}
+.cta-inner{position:relative;z-index:2;padding:140px 0;text-align:center;color:#fff;}
+.cta h2{font-size:clamp(32px,5vw,52px);font-weight:600;max-width:720px;margin:0 auto 24px;line-height:1.15;}
+.cta h2 em{color:var(--rose-soft);font-style:italic;font-weight:500;}
+.cta p{color:rgba(255,255,255,.7);margin-bottom:40px;font-size:15px;}
+.cta-btns{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;}
+.btn-light{background:var(--ivory);color:var(--ink);padding:18px 38px;font-size:13.5px;font-weight:600;}
+.btn-outline-light{border:1.5px solid rgba(255,255,255,.6);color:#fff;padding:18px 38px;font-size:13.5px;font-weight:600;}
+
+.book-section{padding:110px 0;background:var(--ivory-deep);}
+.book-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;}
+.book-info h2{font-size:clamp(28px,4vw,40px);font-weight:600;line-height:1.25;margin-bottom:20px;}
+.book-info p{font-size:15px;line-height:1.8;color:var(--ink-soft);margin-bottom:32px;max-width:400px;}
+.book-info-item{display:flex;gap:14px;padding:16px 0;border-top:1px solid var(--line);}
+.book-info-item b{display:block;font-size:13.5px;margin-bottom:2px;}
+.book-info-item span{font-size:13px;color:var(--ink-soft);}
+.wa-inline{display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#fff;padding:14px 26px;font-size:13.5px;font-weight:600;margin-top:24px;}
+.form-card{background:var(--ivory);padding:44px;box-shadow:0 25px 60px -20px rgba(36,30,27,.2);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px;}
+.form-row.full{grid-template-columns:1fr;}
+.form-field label{display:block;font-size:11.5px;letter-spacing:.5px;text-transform:uppercase;color:var(--ink-soft);margin-bottom:8px;}
+.form-field input,.form-field select,.form-field textarea{width:100%;border:1px solid var(--line);background:#fff;padding:13px 14px;font-family:'Manrope',sans-serif;font-size:14px;color:var(--ink);}
+.form-field textarea{resize:vertical;min-height:90px;}
+.form-submit{width:100%;background:var(--rose);color:#fff;padding:16px;font-size:13.5px;font-weight:600;letter-spacing:.3px;border:none;margin-top:6px;cursor:pointer;transition:.3s;}
+.form-submit:hover{background:var(--rose-deep);}
+@media(max-width:900px){.book-grid{grid-template-columns:1fr;gap:44px;}.form-row{grid-template-columns:1fr;}.form-card{padding:28px;}}
+
+.contact-section{padding:100px 0;}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;box-shadow:0 25px 60px -20px rgba(36,30,27,.2);}
+.contact-map iframe{width:100%;height:100%;min-height:420px;border:0;filter:grayscale(.3) contrast(1.05);}
+.contact-details{background:var(--ink);color:var(--ivory);padding:50px 44px;display:flex;flex-direction:column;justify-content:center;gap:26px;}
+.contact-details .hero-kicker{color:var(--gold);}
+.contact-details .hero-kicker::before{background:var(--gold);}
+.contact-item b{display:block;font-family:'Fraunces',serif;font-size:16px;margin-bottom:4px;}
+.contact-item span{font-size:13.5px;opacity:.7;}
+@media(max-width:900px){.contact-grid{grid-template-columns:1fr;}.contact-map iframe{min-height:280px;}}
+
+footer{background:var(--ink);color:rgba(248,243,236,.6);padding:70px 0 30px;}
+.footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:44px;margin-bottom:50px;}
+.footer-grid h4{color:var(--ivory);font-family:'Fraunces',serif;font-size:15px;margin-bottom:18px;font-weight:500;}
+.footer-grid a{display:block;font-size:13px;margin-bottom:10px;opacity:.7;}
+.footer-bottom{border-top:1px solid rgba(248,243,236,.1);padding-top:24px;font-size:12px;text-align:center;}
+
+.wa-fab{position:fixed;bottom:26px;right:26px;width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(37,211,102,.35);z-index:200;}
+.wa-fab svg{width:26px;height:26px;fill:#fff;}
+.reveal{opacity:0;transform:translateY(30px);}
+
+/* ===== TABLET (≤900px) ===== */
+@media(max-width:900px){
+  .container{padding:0 24px;}
+  nav{padding:16px 22px;}
+  .hero{padding:110px 0 0;}
+  .hero-grid{grid-template-columns:1fr;gap:40px;}
+  .hero-text{padding-right:0;padding-bottom:0;order:1;}
+  .hero-visual{order:0;aspect-ratio:4/3.6;}
+  .hero-caption{flex-wrap:wrap;gap:12px;}
+  .pillars .container{grid-template-columns:1fr 1fr;}
+  .interlude-content{padding:44px 26px;}
+  .interlude-stats{gap:36px;}
+  .about{padding:90px 0;}
+  .about-body{grid-template-columns:1fr;gap:40px;}
+  .process{padding:70px 0 90px;}
+  .process-step{grid-template-columns:44px 1fr;gap:18px;}
+  .process-num{width:44px;height:44px;font-size:14px;}
+  .services{padding:70px 0 90px;}
+  .services-grid{grid-template-columns:1fr 1fr;}
+  .gallery{padding:80px 0;}
+  .spotlight-content{padding:0 26px;}
+  .spotlight-quote p{font-size:20px;}
+  .testimonials{padding:70px 0 90px;}
+  .testi-grid{grid-template-columns:1fr;}
+  .cta-inner{padding:100px 0;}
+  .book-section{padding:80px 0;}
+  .book-grid{grid-template-columns:1fr;gap:40px;}
+  .form-row{grid-template-columns:1fr;}
+  .form-card{padding:28px;}
+  .contact-section{padding:70px 0;}
+  .contact-grid{grid-template-columns:1fr;}
+  .contact-map iframe{min-height:280px;}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:34px;}
+}
+
+/* ===== MOBILE (≤600px) ===== */
+@media(max-width:600px){
+  .container{padding:0 20px;}
+  nav{padding:14px 18px;}
+  .logo{font-size:17px;}
+  .hero{padding:96px 0 0;}
+  .hero-kicker{font-size:11px;letter-spacing:1.5px;margin-bottom:16px;}
+  .hero h1{margin-bottom:20px;letter-spacing:-.5px;}
+  .hero-text p{font-size:15px;margin-bottom:26px;}
+  .hero-ctas{flex-direction:column;align-items:stretch;gap:12px;}
+  .btn-primary,.btn-text{text-align:center;}
+  .hero-visual{aspect-ratio:4/4.6;}
+  .hero-visual-badge{padding:10px 16px;bottom:14px;left:14px;}
+  .status-pill{font-size:11px;padding:7px 13px;}
+  .pillars{padding:0 0 50px;}
+  .pillars .container{grid-template-columns:1fr;}
+  .pillar{padding:26px 22px;}
+  .interlude{height:auto;min-height:0;padding:60px 0;}
+  .interlude video{position:absolute;}
+  .interlude-content{position:relative;padding:0 22px;justify-content:flex-start;}
+  .interlude-content h2{font-size:26px;}
+  .interlude-stats{gap:24px 32px;margin-top:26px;}
+  .interlude-stats .stat b{font-size:24px;}
+  .about{padding:70px 0;}
+  .about-head{margin-bottom:36px;}
+  .about-head h2{font-size:24px;}
+  .about-body p{font-size:14.5px;}
+  .video-card{margin-top:20px;}
+  .play-btn{width:50px;height:50px;}
+  .process{padding:56px 0 70px;}
+  .process-line-wrap{margin-top:36px;}
+  .process-body h3{font-size:19px;}
+  .process-body p{font-size:14px;}
+  .sec-kicker{margin-bottom:36px;}
+  .sec-kicker h2{font-size:26px;}
+  .services{padding:56px 0 70px;}
+  .services-grid{grid-template-columns:1fr;}
+  .service-card{min-height:0;padding:24px 22px;}
+  .gallery{padding:60px 0;}
+  .ba-label{font-size:9.5px;padding:6px 12px;}
+  .ba-divider::after{width:32px;height:32px;font-size:12px;}
+  .gallery-strip{margin-top:36px;gap:14px;}
+  .gs-item{flex:0 0 160px;}
+  .spotlight-video{height:auto;min-height:0;padding:60px 0;}
+  .spotlight-content{position:relative;padding:0 22px;}
+  .spotlight-quote{max-width:100%;}
+  .spotlight-quote p{font-size:18px;}
+  .testimonials{padding:56px 0 70px;}
+  .testi-card{padding:28px 22px;}
+  .testi-card p{font-size:15px;}
+  .cta-inner{padding:70px 0;}
+  .cta p{font-size:14px;}
+  .cta-btns{flex-direction:column;align-items:stretch;}
+  .book-section{padding:60px 0;}
+  .book-info p{max-width:100%;}
+  .form-card{padding:22px;}
+  .contact-section{padding:56px 0;}
+  .contact-details{padding:34px 26px;gap:20px;}
+  .footer-grid{grid-template-columns:1fr;gap:30px;}
+  .footer-grid div:first-child p{max-width:100%;}
+  .mobile-menu{width:82%;padding:90px 28px 40px;}
+}
+
+/* ===== SMALL PHONES (≤380px) ===== */
+@media(max-width:380px){
+  .hero h1{font-size:38px;}
+  .hero-kicker::before{width:16px;}
+  .book-btn{display:none;}
+  .interlude-stats{gap:20px 26px;}
+  .form-card{padding:18px;}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="logo">Dr. Shibha Mehta</div>
+  <div class="navlinks">
+    <a href="#about">Meet the Doctor</a>
+    <a href="#process">Your Visit</a>
+    <a href="#services">Services</a>
+    <a href="#gallery">Transformations</a>
+    <a href="#testimonials">Reviews</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="#book" class="book-btn">Book Appointment</a>
+  <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="menu-overlay" id="menuOverlay"></div>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about">Meet the Doctor</a>
+  <a href="#process">Your Visit</a>
+  <a href="#services">Services</a>
+  <a href="#gallery">Transformations</a>
+  <a href="#testimonials">Reviews</a>
+  <a href="#contact">Contact</a>
+  <a href="#book" class="btn-primary">Book Appointment</a>
+</div>
+
+<section class="hero container">
+  <div class="hero-grid">
+    <div class="hero-text">
+      <div class="hero-kicker">Founder & Lead Dentist</div>
+      <h1>Dr. Shibha<br><span class="line2">Mehta, DDS</span></h1>
+      <p>A women-led dental practice in Umm Suqeim, built on a simple idea: patients heal faster when they trust the hands treating them.</p>
+      <div class="hero-ctas">
+        <a href="#book" class="btn-primary">Book an Appointment</a>
+        <a href="#about" class="btn-text">Read Her Story</a>
+      </div>
+    </div>
+    <div class="hero-visual reveal">
+      <video autoplay muted loop playsinline>
+        <source src="https://assets.mixkit.co/videos/33328/33328-720.mp4" type="video/mp4">
+      </video>
+      <div class="hero-visual-badge"><span class="badge-stars">★★★★★</span></div>
+    </div>
+  </div>
+  <div class="hero-caption">
+    <span class="status-pill"><span class="status-dot"></span>Open Today · Closes 9 PM</span>
+  </div>
+</section>
+
+<section class="pillars">
+  <div class="container">
+    <div class="pillar reveal">
+      <div class="pillar-icon"><svg viewBox="0 0 24 24"><path d="M12 3l2.4 5.3L20 9l-4 4.1L17 19l-5-2.8L7 19l1-5.9L4 9l5.6-.7L12 3z"/></svg></div>
+      <b>Women-Led Practice</b>
+      <p>Every clinician on our team is a woman — built for patients who value that comfort.</p>
+    </div>
+    <div class="pillar reveal">
+      <div class="pillar-icon"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 1 16 0 8 8 0 0 1-16 0z"/><path d="M12 7v5l3 2"/></svg></div>
+      <b>Same-Day Emergency Slots</b>
+      <p>Sudden dental pain doesn't wait — neither do we. Urgent cases seen the same day.</p>
+    </div>
+    <div class="pillar reveal">
+      <div class="pillar-icon"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="1.5"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></div>
+      <b>Digital, Painless Diagnostics</b>
+      <p>Low-radiation digital X-rays and intraoral scans for faster, gentler diagnosis.</p>
+    </div>
+    <div class="pillar reveal">
+      <div class="pillar-icon"><svg viewBox="0 0 24 24"><path d="M8 12a4 4 0 1 1 8 0 4 4 0 0 1-8 0z"/><path d="M2 12h2M20 12h2M12 2v2M12 20v2"/></svg></div>
+      <b>English, Arabic & Hindi</b>
+      <p>A multilingual care team so every patient in Umm Suqeim feels understood.</p>
+    </div>
+  </div>
+</section>
+
+<section class="interlude">
+  <video autoplay muted loop playsinline>
+    <source src="https://assets.mixkit.co/videos/6592/6592-720.mp4" type="video/mp4">
+  </video>
+  <div class="interlude-content">
+    <div class="hero-kicker">Step Inside</div>
+    <h2>A clinic designed to feel calm before you even sit down.</h2>
+    <div class="interlude-stats">
+      <div class="stat"><b>12+</b><span>Years in Practice</span></div>
+      <div class="stat"><b>4.9★</b><span>78 Google Reviews</span></div>
+      <div class="stat"><b>100%</b><span>Women-Owned</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="about container" id="about">
+  <div class="about-head reveal">
+    <div class="hero-kicker">Her Philosophy</div>
+    <h2>"Every patient deserves to feel heard before they feel treated."</h2>
+  </div>
+  <div class="about-body">
+    <div class="reveal">
+      <p>Dr. Shibha Mehta founded this clinic with a clear intention — to build a dental practice where Umm Suqeim families feel genuinely cared for, not processed.</p>
+      <p>Her approach blends clinical precision with real patience: explaining every step, addressing every concern, and treating each visit as personal, not transactional.</p>
+      <div class="video-card">
+        <video autoplay muted loop playsinline>
+          <source src="https://assets.mixkit.co/videos/9027/9027-720.mp4" type="video/mp4">
+        </video>
+        <div class="play-btn"></div>
+        <div class="video-card-caption">A message from Dr. Mehta — 0:48</div>
+      </div>
+    </div>
+    <div class="quals-list reveal">
+      <div class="qual-item"><b>BDS, MDS — Dental Surgery</b><span>Qualification</span></div>
+      <div class="qual-item"><b>Invisalign Certified Provider</b><span>Specialization</span></div>
+      <div class="qual-item"><b>12+ Years Clinical Practice</b><span>Experience</span></div>
+      <div class="qual-item"><b>Cosmetic & Family Dentistry</b><span>Focus Areas</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="process container" id="process">
+  <div class="sec-kicker">
+    <div>
+      <div class="hero-kicker">Your Visit</div>
+      <h2>What to expect, start to finish.</h2>
+    </div>
+  </div>
+  <div class="process-line-wrap">
+    <div class="process-line"></div>
+    <div class="process-step reveal"><div class="process-num">01</div><div class="process-body"><h3>Consultation</h3><p>A relaxed conversation about your concerns, history, and goals — no rush, no jargon.</p></div></div>
+    <div class="process-step reveal"><div class="process-num">02</div><div class="process-body"><h3>Diagnosis & Plan</h3><p>Dr. Mehta walks you through findings and options, so every decision is yours to make.</p></div></div>
+    <div class="process-step reveal"><div class="process-num">03</div><div class="process-body"><h3>Treatment</h3><p>Precise, gentle care delivered at your pace, with comfort checked at every step.</p></div></div>
+    <div class="process-step reveal"><div class="process-num">04</div><div class="process-body"><h3>Aftercare</h3><p>Clear guidance and follow-up, so your results — and comfort — last.</p></div></div>
+  </div>
+</section>
+
+<section class="services container" id="services">
+  <div class="sec-kicker">
+    <h2>Services, by need.</h2>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal"><h3>General Dentistry</h3><p>Checkups & preventive care.</p></div>
+    <div class="service-card reveal"><h3>Teeth Cleaning</h3><p>Professional deep cleaning.</p></div>
+    <div class="service-card reveal"><h3>Whitening</h3><p>Safe, in-clinic brightening.</p></div>
+    <div class="service-card reveal"><h3>Veneers</h3><p>Custom porcelain finish.</p></div>
+    <div class="service-card reveal"><h3>Dental Implants</h3><p>Permanent tooth replacement.</p></div>
+    <div class="service-card reveal"><h3>Root Canal</h3><p>Pain-free precision therapy.</p></div>
+    <div class="service-card reveal"><h3>Braces & Invisalign</h3><p>Discreet alignment, all ages.</p></div>
+    <div class="service-card reveal"><h3>Crowns & Bridges</h3><p>Restore strength and shape.</p></div>
+    <div class="service-card reveal"><h3>Pediatric Dentistry</h3><p>Gentle care for little smiles.</p></div>
+    <div class="service-card reveal"><h3>Emergency Care</h3><p>Prompt attention, same day.</p></div>
+    <div class="service-card reveal"><h3>Cosmetic Dentistry</h3><p>Full smile makeovers.</p></div>
+    <div class="service-card reveal"><h3>Same-Day Crowns</h3><p>Efficient, single-visit care.</p></div>
+  </div>
+</section>
+
+<section class="gallery" id="gallery">
+  <div class="container">
+    <div class="sec-kicker">
+      <div>
+        <div class="hero-kicker">The Proof</div>
+        <h2>Smile transformations</h2>
+      </div>
+    </div>
+    <div class="ba-wrap reveal">
+      <div class="ba-slider">
+        <div class="before"><span class="ba-label">Before</span></div>
+        <div class="after"><span class="ba-label">After</span></div>
+        <div class="ba-divider"></div>
+      </div>
+    </div>
+    <div class="gallery-strip reveal">
+      <div class="gs-item">Veneers — Case 01</div>
+      <div class="gs-item">Whitening — Case 02</div>
+      <div class="gs-item">Implants — Case 03</div>
+      <div class="gs-item">Invisalign — Case 04</div>
+      <div class="gs-item">Crowns — Case 05</div>
+    </div>
+  </div>
+</section>
+
+<section class="spotlight-video">
+  <video autoplay muted loop playsinline>
+    <source src="https://assets.mixkit.co/videos/4766/4766-720.mp4" type="video/mp4">
+  </video>
+  <div class="spotlight-content">
+    <div class="spotlight-quote">
+      <div class="stars">★★★★★</div>
+      <p>"An entirely different feeling walking into this clinic — calm, unhurried, and genuinely caring."</p>
+      <div class="name"><b>Reem Al Fardan</b><span>Patient since 2022 · Umm Suqeim</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials container" id="testimonials">
+  <div class="sec-kicker">
+    <h2>What patients say</h2>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card reveal"><div class="stars">★★★★★</div><p>"Dr. Mehta's care for my kids' first dental visits was extraordinary."</p><div class="testi-name"><b>Priya Nair</b><span>Jumeirah</span></div></div>
+    <div class="testi-card reveal"><div class="stars">★★★★★</div><p>"Precise, gentle, and completely transparent about every treatment."</p><div class="testi-name"><b>David Coleman</b><span>Al Wasl</span></div></div>
+    <div class="testi-card reveal"><div class="stars">★★★★★</div><p>"A dentist who actually listens — rare, and exactly what Umm Suqeim needed."</p><div class="testi-name"><b>Layla Haddad</b><span>Umm Suqeim</span></div></div>
+  </div>
+</section>
+
+<section class="cta">
+  <video autoplay muted loop playsinline>
+    <source src="https://assets.mixkit.co/videos/36537/36537-720.mp4" type="video/mp4">
+  </video>
+  <div class="container cta-inner">
+    <div class="hero-kicker" style="justify-content:center;color:var(--gold);">Book Your Visit</div>
+    <h2>Meet <em>Dr. Mehta</em> and start<br>your best smile.</h2>
+    <p>Open today until 9 PM · 890 Al Wasl Rd, Umm Suqeim First, Dubai</p>
+  </div>
+</section>
+
+<section class="book-section" id="book">
+  <div class="container">
+    <div class="book-grid">
+      <div class="book-info reveal">
+        <div class="hero-kicker">Reserve Your Visit</div>
+        <h2>Let's get your smile on the calendar.</h2>
+        <p>Fill in a few details and our team will confirm your appointment within one working hour — or reach out on WhatsApp for a faster reply.</p>
+        <div class="book-info-item"><div><b>Call Us</b><span>+971 50 284 0994</span></div></div>
+        <div class="book-info-item"><div><b>Location</b><span>890 Al Wasl Rd, Umm Suqeim First, Dubai</span></div></div>
+        <div class="book-info-item"><div><b>Hours</b><span>Open Today · Closes 9 PM</span></div></div>
+        <a href="https://wa.me/971502840994" class="wa-inline">WhatsApp Us Instead →</a>
+      </div>
+      <div class="form-card reveal">
+        <div class="form-row">
+          <div class="form-field"><label>Full Name</label><input type="text" placeholder="Your name"></div>
+          <div class="form-field"><label>Phone</label><input type="tel" placeholder="+971 5X XXX XXXX"></div>
+        </div>
+        <div class="form-row full">
+          <div class="form-field"><label>Email</label><input type="email" placeholder="you@email.com"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label>Service Needed</label>
+            <select>
+              <option>Select a service</option>
+              <option>General Dentistry</option>
+              <option>Teeth Cleaning</option>
+              <option>Whitening</option>
+              <option>Veneers</option>
+              <option>Dental Implants</option>
+              <option>Root Canal</option>
+              <option>Braces / Invisalign</option>
+              <option>Crowns & Bridges</option>
+              <option>Pediatric Dentistry</option>
+              <option>Emergency Care</option>
+              <option>Cosmetic Dentistry</option>
+            </select>
+          </div>
+          <div class="form-field"><label>Preferred Date & Time</label><input type="text" placeholder="e.g. Mon, 3:00 PM"></div>
+        </div>
+        <div class="form-row full">
+          <div class="form-field"><label>Message (optional)</label><textarea placeholder="Anything we should know before your visit?"></textarea></div>
+        </div>
+        <button class="form-submit">Confirm Appointment Request</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-section container" id="contact">
+  <div class="sec-kicker">
+    <div>
+      <div class="hero-kicker">Visit Us</div>
+      <h2>Find Dr. Shibha Mehta Dental.</h2>
+    </div>
+  </div>
+  <div class="contact-grid reveal">
+    <div class="contact-map">
+      <iframe src="https://www.google.com/maps?q=890+Al+Wasl+Rd+Umm+Suqeim+First+Dubai&output=embed" loading="lazy"></iframe>
+    </div>
+    <div class="contact-details">
+      <div class="hero-kicker">Get In Touch</div>
+      <div class="contact-item"><b>Address</b><span>890 Al Wasl Rd, Umm Suqeim First, Umm Suqeim 1, Dubai, UAE</span></div>
+      <div class="contact-item"><b>Phone</b><span>+971 50 284 0994</span></div>
+      <div class="contact-item"><b>Email</b><span>hello@drshibhamehta.ae</span></div>
+      <div class="contact-item"><b>Hours</b><span>Open Today · Closes 9 PM — full weekly schedule on request</span></div>
+      <div class="contact-item"><b>WhatsApp</b><span>Click the chat button, bottom right</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div><h4>Dr. Shibha Mehta Dental</h4><p style="font-size:13px;opacity:.7;line-height:1.7;max-width:280px;">890 Al Wasl Rd, Umm Suqeim First, Umm Suqeim 1, Dubai, UAE</p></div>
+      <div><h4>Explore</h4><a href="#about">Meet the Doctor</a><a href="#services">Services</a><a href="#gallery">Gallery</a></div>
+      <div><h4>Contact</h4><a href="tel:+971502840994">+971 50 284 0994</a><a href="#">Email</a></div>
+      <div><h4>Hours</h4><a>Open Today · Closes 9 PM</a></div>
+    </div>
+    <div class="footer-bottom">© 2026 Dr. Shibha Mehta Dental Clinic. All rights reserved.</div>
+  </div>
+</footer>
+
+<a href="https://wa.me/971502840994" class="wa-fab" target="_blank">
+  <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.37 5.07L2 22l5.06-1.33C8.5 21.5 10.2 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.2c-.22.62-1.28 1.2-1.77 1.24-.46.05-1 .07-1.6-.1-.37-.1-.85-.28-1.46-.55-2.58-1.12-4.26-3.72-4.4-3.9-.13-.18-1.05-1.4-1.05-2.67 0-1.27.67-1.9.9-2.15.23-.25.5-.32.67-.32.17 0 .34 0 .48.01.16.01.36-.06.56.43.22.53.73 1.83.8 1.96.07.13.11.29.02.47-.09.18-.13.29-.27.45-.13.16-.28.35-.4.47-.13.13-.27.27-.12.53.16.27.7 1.16 1.5 1.87 1.03.92 1.9 1.2 2.17 1.34.27.13.42.11.58-.07.16-.18.68-.79.86-1.07.18-.27.36-.22.6-.13.25.09 1.58.75 1.85.88.27.13.45.2.52.31.07.11.07.65-.15 1.27z"/></svg>
+</a>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled', window.scrollY>60);});
+
+const hamburger=document.getElementById('hamburger');
+const mobileMenu=document.getElementById('mobileMenu');
+const menuOverlay=document.getElementById('menuOverlay');
+function closeMenu(){hamburger.classList.remove('open');mobileMenu.classList.remove('open');menuOverlay.classList.remove('open');}
+hamburger.addEventListener('click',()=>{
+  const isOpen=mobileMenu.classList.toggle('open');
+  hamburger.classList.toggle('open',isOpen);
+  menuOverlay.classList.toggle('open',isOpen);
+});
+menuOverlay.addEventListener('click',closeMenu);
+mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+
+gsap.utils.toArray('.reveal').forEach(el=>{
+  gsap.to(el,{opacity:1,y:0,duration:.9,ease:'power2.out',scrollTrigger:{trigger:el,start:'top 88%'}});
+});
+gsap.from('.hero-text > *',{opacity:0,y:20,duration:.8,stagger:.1,ease:'power2.out'});
+
+const slider=document.querySelector('.ba-slider');
+const beforeEl=document.querySelector('.ba-slider .before');
+const divider=document.querySelector('.ba-divider');
+let dragging=false;
+slider.addEventListener('mousedown',()=>dragging=true);
+window.addEventListener('mouseup',()=>dragging=false);
+slider.addEventListener('mousemove',(e)=>{
+  if(!dragging)return;
+  const rect=slider.getBoundingClientRect();
+  let pct=((e.clientX-rect.left)/rect.width)*100;
+  pct=Math.max(0,Math.min(100,pct));
+  beforeEl.style.clipPath=`inset(0 ${100-pct}% 0 0)`;
+  divider.style.left=pct+'%';
+});
+slider.addEventListener('touchmove',(e)=>{
+  const rect=slider.getBoundingClientRect();
+  let pct=((e.touches[0].clientX-rect.left)/rect.width)*100;
+  pct=Math.max(0,Math.min(100,pct));
+  beforeEl.style.clipPath=`inset(0 ${100-pct}% 0 0)`;
+  divider.style.left=pct+'%';
+});
+</script>
+</body>
+</html>
