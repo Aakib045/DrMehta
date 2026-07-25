@@ -206,7 +206,8 @@ footer{background:var(--ink);color:rgba(248,243,236,.6);padding:70px 0 30px;}
 
 .wa-fab{position:fixed;bottom:26px;right:26px;width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(37,211,102,.35);z-index:200;}
 .wa-fab svg{width:26px;height:26px;fill:#fff;}
-.reveal{opacity:0;transform:translateY(30px);}
+.reveal{opacity:1;}
+.js-ready .reveal{opacity:0;transform:translateY(30px);}
 
 /* ===== TABLET (≤900px) ===== */
 @media(max-width:900px){
@@ -615,7 +616,6 @@ footer{background:var(--ink);color:rgba(248,243,236,.6);padding:70px 0 30px;}
 </a>
 
 <script>
-gsap.registerPlugin(ScrollTrigger);
 window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled', window.scrollY>60);});
 
 const hamburger=document.getElementById('hamburger');
@@ -630,10 +630,16 @@ hamburger.addEventListener('click',()=>{
 menuOverlay.addEventListener('click',closeMenu);
 mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
 
-gsap.utils.toArray('.reveal').forEach(el=>{
-  gsap.to(el,{opacity:1,y:0,duration:.9,ease:'power2.out',scrollTrigger:{trigger:el,start:'top 88%'}});
-});
-gsap.from('.hero-text > *',{opacity:0,y:20,duration:.8,stagger:.1,ease:'power2.out'});
+/* Animations only run if GSAP actually loaded — otherwise all content
+   stays visible via the default CSS (opacity:1) instead of getting stuck hidden. */
+if(typeof gsap !== 'undefined'){
+  document.documentElement.classList.add('js-ready');
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.utils.toArray('.reveal').forEach(el=>{
+    gsap.to(el,{opacity:1,y:0,duration:.9,ease:'power2.out',scrollTrigger:{trigger:el,start:'top 88%'}});
+  });
+  gsap.from('.hero-text > *',{opacity:0,y:20,duration:.8,stagger:.1,ease:'power2.out'});
+}
 
 const slider=document.querySelector('.ba-slider');
 const beforeEl=document.querySelector('.ba-slider .before');
